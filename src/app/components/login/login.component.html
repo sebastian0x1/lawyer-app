@@ -1,0 +1,29 @@
+<div class="body">
+    <div class="login-container">
+        <div  class="containerimg">
+            <img class="containerimg" src="../../assets/img/imglogin6.png" alt="">
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <form class="container" *ngIf="!loadingSpinner" [formGroup]="form" (ngSubmit)="ingresar()">
+            <h1>Bienvenido!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <mat-divider></mat-divider>
+            <h2>Inicio Sesión</h2>
+            <div class="alto-field">
+                <mat-form-field class="ancho-field" appearance="fill">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput autocomplete="off" formControlName="usuario">
+                </mat-form-field>    
+                <mat-form-field class="ancho-field" appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput  autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>    
+                </mat-form-field>
+            </div>
+            <button class="btn-login" mat-raised-button >Iniciar Sesion</button>
+            <mat-spinner *ngIf="loadingSpinner" diameter="50" class="spinner"></mat-spinner>
+        </form>
+  </div>
+</div>

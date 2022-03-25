@@ -1,0 +1,75 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+  
+    </mat-drawer>
+  
+    <app-navbar (toggleSidenav)="drawer.toggle()"></app-navbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-drawer-container>
+
+
+<!-- <mat-sidenav-container autosize>
+    <mat-sidenav #sidenav mode="side" opened="true">
+      <mat-nav-list>
+  
+        <mat-list-item>
+          <mat-icon mat-list-icon class="chevron-button sidenav-button" (click)="isExpanded = !isExpanded" [ngClass]="{'rotated': isExpanded}">chevron_right</mat-icon>
+        </mat-list-item>
+  
+        <mat-list-item routerLink="/dashboard/casos">
+          <mat-icon mat-list-icon >home</mat-icon>
+          <span *ngIf="isExpanded">Casos</span>
+        </mat-list-item>
+  
+        <mat-list-item routerLink="/dashboard/informes">
+          <mat-icon mat-list-icon>important_devices</mat-icon>
+          <span *ngIf="isExpanded">Informes</span>
+        </mat-list-item>
+  
+        <mat-list-item routerLink="/dashboard/ayuda">
+          <mat-icon mat-list-icon>supervisor_account</mat-icon>
+          <span *ngIf="isExpanded">Ayuda</span>
+        </mat-list-item>
+  
+      </mat-nav-list>
+    </mat-sidenav>
+
+
+  
+  </mat-sidenav-container>
+     -->
+
+<!-- <div class="izq">
+    <mat-grid-list cols="1"  >
+        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+            <mat-card class="example-card">
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <button mat-button class="sidenavbtn" routerLink="/dashboard/demandas">Demandas</button>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                    <button class="sidenavbtn">Ejemplo</button>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+            <button mat-button class="sidenavbtn" routerLink="/dashboard/casos">Casos</button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+            <button mat-button class="sidenavbtn" routerLink="/dashboard/informes">Informes</button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+            <button mat-button class="sidenavbtn" routerLink="/dashboard/ayuda">Ayuda</button>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div> -->

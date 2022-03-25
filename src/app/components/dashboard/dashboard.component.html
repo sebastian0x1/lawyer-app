@@ -1,0 +1,21 @@
+<mat-grid-list cols="20" rowHeight="10%" >
+    <mat-grid-tile class="sidebar-tile" [colspan]="3" [rowspan]="10" >
+        <div class="container">
+            <app-sidebar></app-sidebar>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile class="nav-tile" [colspan]="17" [rowspan]="1" >
+        <div class="container">
+            <app-navbar></app-navbar>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile class="separador" [colspan]="1" [rowspan]="9" >
+    </mat-grid-tile>
+    <mat-grid-tile class="content" [colspan]="15" [rowspan]="9" >
+        <div class="container">
+            <router-outlet ></router-outlet>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile class="separador" [colspan]="1" [rowspan]="9" >
+    </mat-grid-tile>
+</mat-grid-list>

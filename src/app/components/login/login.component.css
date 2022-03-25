@@ -1,0 +1,107 @@
+.body{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background: rgb(191,148,96);
+  background: linear-gradient(180deg, rgba(191,148,96,1) 17%, rgba(217,186,130,1) 76%);}
+h1{
+  padding-top: 40px;
+  padding-left: 40px;
+  font-size: 30px;
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+}
+h2{
+  padding-top: 20px;
+  padding-left: 40px;
+  text-align: left;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+}
+p{
+  padding-left: 40px;
+  text-align: left;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+}
+.login-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  max-height: 600px;
+  text-align: center;
+  align-items: left;
+  background-color: rgba(0, 0, 0, 0.685);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  color: #fff;
+}
+.containerimg{
+
+  height: 100%;
+  width: 100%;
+  max-width: 470;
+  max-height: 450px;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+
+}
+img{
+  display: cover;
+  max-width:100%;
+  max-height:100%;
+  
+}
+.container{
+
+  height: 100%;
+  width: 100%;
+  max-width: 430px;
+}
+.ancho-field{
+  margin-top: 4%;
+  width: 80%;
+}
+.alto-field{
+
+}
+.btn-login{
+  width: 80%;
+  height: 50px;
+  margin-top: 10%;
+}
+.spinner{
+  margin-top: 30px;
+  margin: 0 auto;
+}
+/*CSS MAT INPUT*/
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(211, 174, 52) !important;
+ }
+ ::ng-deep .mat-form-field-label{
+   color: #fff;
+
+ }
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: green !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: rgb(180, 134, 81) !important;;
+}
+
+::ng-deep.mat-raised-button{
+  background-color: #BF9460;
+  color: rgb(241, 239, 239);
+}
+::ng-deep.mat-divider{
+ background-color: 
+BF9460;
+}
