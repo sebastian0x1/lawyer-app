@@ -6,6 +6,8 @@ const routes: Routes = [
 
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
+  {path: 'dashboard', loadChildren:() => import('./components/dashboard/dashboard.module' ).then(x => x.DashboardModule)},
+
 ];
 
 @NgModule({

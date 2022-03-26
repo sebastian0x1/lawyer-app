@@ -4,8 +4,9 @@
   height: 100%;
   align-items: center;
   background: rgb(191,148,96);
-  background: linear-gradient(180deg, rgba(191,148,96,1) 17%, rgba(217,186,130,1) 76%);}
-h1{
+  background: linear-gradient(180deg, rgba(191,148,96,1) 17%, rgba(217,186,130,1) 76%);
+}
+  h1{
   padding-top: 40px;
   padding-left: 40px;
   font-size: 30px;
