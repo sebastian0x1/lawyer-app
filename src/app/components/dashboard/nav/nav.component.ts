@@ -28,8 +28,13 @@ export class NavComponent {
       this.size = 30;
     }
   }
+  //HOVER
+  changeText: boolean;
 
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.changeText = false;
+  }
+
 
 }

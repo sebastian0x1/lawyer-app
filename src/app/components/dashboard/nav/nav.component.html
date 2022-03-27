@@ -6,8 +6,7 @@
       [class.menu-close]="!isExpanded"
       [class.menu-open]="isExpanded">
 
-    <mat-toolbar>Menu</mat-toolbar>
-      <mat-nav-list>
+      <mat-nav-list (mouseout)="changeText=false">
         <mat-card class="example-card">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
@@ -18,7 +17,7 @@
         <mat-accordion>
           <mat-expansion-panel hideToggle>
             <mat-expansion-panel-header>
-              <mat-list-item [routerLinkActive]="['is-active']" routerLink="/dashboard/demandas">      
+              <mat-list-item routerLink="/dashboard/demanda">      
                 <mat-icon mat-list-icon>person</mat-icon>
                 <h4 mat-line *ngIf="isExpanded">Demandas</h4>
                 <mat-expansion-panel>a</mat-expansion-panel>      
@@ -27,7 +26,7 @@
           <mat-list-item>  a</mat-list-item>
       </mat-expansion-panel>
       </mat-accordion>
-        <mat-list-item routerLink="/dashboard/casos">
+        <mat-list-item routerLink="/dashboard/caso">
           <mat-icon mat-list-icon>assignment</mat-icon>
           <h4 mat-line *ngIf="isExpanded">Casos</h4>
         </mat-list-item>
@@ -48,9 +47,14 @@
       </button>      <span>lawyer-app</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-            
-     <router-outlet ></router-outlet>
-
-
+    <div class="grid-container">
+      <div class="header"></div>
+      <div class="left"></div>
+      <div class="main">
+        <router-outlet ></router-outlet>
+      </div>
+      <div class="right"></div>
+      <div class="footer"></div>
+    </div> 
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -8,8 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularMaterialModule } from './components/material_components/angular-material.module';
-//import { FormsModule } from '@angular/forms';
-//ANGULAR MATERIAL
+import { HttpClientJsonpModule } from '@angular/common/http';
+
 
 
 const appRoutes: Routes = [
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-
+    HttpClientJsonpModule,
 
   ],
   providers: [

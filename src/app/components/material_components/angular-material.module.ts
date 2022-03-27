@@ -32,9 +32,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const materialModules = [
@@ -76,6 +79,9 @@ const materialModules = [
     MatRippleModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
 
 ];
 @NgModule({

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NewDemandaService } from './components/dashboard/new-demanda/new-demanda.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lawyer-app';
+  constructor(private user: NewDemandaService) {
+    this.user.getData().subscribe(data => {
+      console.warn(data)
+    })
+
+  }
 }

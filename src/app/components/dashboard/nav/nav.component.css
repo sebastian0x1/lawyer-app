@@ -1,12 +1,14 @@
 .sidenav-container {
-  
   height: 100%;
   color: aliceblue;
   font-size: large;
 
 }
 
-
+::ng-deep.mat-toolbar{
+  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+height: 100px;
+}
 ::ng-deep .mat-drawer-inner-container{
   background: rgb(196, 152, 100);
 }
@@ -54,3 +56,38 @@
   padding: 0;
 }
 
+
+  /*GRID*/
+  .header { 
+    grid-area: header; 
+    background-color: rgba(0, 0, 0, 0.753);}
+  .left { 
+    grid-area: left; 
+    background-color: rgba(0, 0, 0, 0.753);}
+  .main { 
+    grid-area: main;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    border-radius: 10px; 
+   }
+  .right { 
+    grid-area: right;
+    background-color: rgba(0, 0, 0, 0.753);}
+  .footer { 
+    grid-area: footer;
+    background-color: rgba(0, 0, 0, 0.753);}
+  
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+      'header header header header header header'
+      'left main main main main right'
+      'left main main main main right'
+      'footer footer footer footer footer footer';
+
+    height: 100vh;    
+  }
+  .grid-container > div {
+    padding: 20px 0;
+
+  }
+  
