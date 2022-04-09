@@ -10,22 +10,15 @@
         <mat-card class="example-card">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
-        <mat-accordion>
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-list-item routerLink="/dashboard/demanda">      
-                <mat-icon mat-list-icon>person</mat-icon>
-                <h4 mat-line *ngIf="isExpanded">Demandas</h4>
-                <mat-expansion-panel>a</mat-expansion-panel>      
-              </mat-list-item>
-            </mat-expansion-panel-header>
-          <mat-list-item>  a</mat-list-item>
-      </mat-expansion-panel>
-      </mat-accordion>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle> <button routerLink="/dashboard/profile" mat-button>Dog Breed</button> </mat-card-subtitle>
+        </mat-card-header> 
+      </mat-card>
+        <mat-list-item routerLink="/dashboard/demanda">      
+          <mat-icon mat-list-icon>person</mat-icon>
+            <h4 mat-line *ngIf="isExpanded">Demandas</h4>
+          <mat-expansion-panel>a</mat-expansion-panel>      
+        </mat-list-item>
         <mat-list-item routerLink="/dashboard/caso">
           <mat-icon mat-list-icon>assignment</mat-icon>
           <h4 mat-line *ngIf="isExpanded">Casos</h4>
@@ -42,13 +35,14 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button mat-mini-fab  (click)="drawer.toggle();"color="warn" style="margin: 10px;">
+      <button mat-mini-fab  (click)="drawer.toggle();"color="warn" style="margin: 10px; background-color: rgb(109, 30, 19); color: rgb(238, 236, 216);">
         <mat-icon aria-label="Menu">menu</mat-icon>
       </button>      <span>lawyer-app</span>
+      <mat-icon mat-mini-fab style="margin: 10px; background-color: rgb(109, 30, 19); color: rgb(238, 236, 216); float: right;">exit_to_app</mat-icon>
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="grid-container">
-      <div class="header"></div>
+
       <div class="left"></div>
       <div class="main">
         <router-outlet ></router-outlet>

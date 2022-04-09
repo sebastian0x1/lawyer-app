@@ -1,10 +1,8 @@
-
 /* Structure */
 .example-container {
   position: relative;
   height: 100%;
 
-  background-color: aqua;
 }
 
 .example-table-container {
@@ -12,11 +10,20 @@
   min-height: 100%;
   max-height: 300px;
   overflow: auto;
+  color: antiquewhite;
 }
 
 table {
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.267);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.349);
 
+
+}
+
+h2 {
+  text-align: center;
+  font-size: x-large;
 }
 
 .example-loading-shade {
@@ -30,11 +37,22 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .example-rate-limit-reached {
   max-width: 360px;
   text-align: center;
+}
+
+.filtro {
+  background-color: rgb(168, 149, 125);
+  color: aliceblue;
+}
+
+::ng-deep .mat-paginator-container {
+  background-color: rgb(168, 149, 125);
+  color: aliceblue;
 }
 
 /* Column Widths */
@@ -46,27 +64,38 @@ table {
 .mat-column-created {
   max-width: 124px;
 }
+
 /*EXPANDABLE TABLE*/
+th {
+  background-color: rgb(168, 149, 125);
+  color: aliceblue;
+}
 
 tr.example-detail-row {
   height: 0;
+
 }
 
 tr.example-element-row:not(.example-expanded-row):hover {
-  background: whitesmoke;
+  background: aliceblue;
+
 }
 
 tr.example-element-row:not(.example-expanded-row):active {
-  background: #efefef;
+  background: aliceblue;
 }
 
 .example-element-row td {
   border-bottom-width: 0;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.267);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.349);
 }
 
 .example-element-detail {
   overflow: hidden;
   display: flex;
+  color: aliceblue;
 }
 
 .example-element-diagram {

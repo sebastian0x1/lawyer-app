@@ -24,7 +24,7 @@ import { Data } from '@angular/router';
   ],
 })
 export class DemandaComponent implements AfterViewInit {
-  displayedColumns: string[] = ['created', 'state', 'number', 'title', 'select'];
+  displayedColumns: string[] = ['created', 'state', 'number', 'title', 'Editar', 'Eliminar',];
   exampleDatabase: ExampleHttpDatabase | null;
   data: GithubIssue[] = [];
   expandedElement: GithubIssue | null;

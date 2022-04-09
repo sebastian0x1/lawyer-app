@@ -1,19 +1,21 @@
-.body{
+.body {
   display: flex;
   justify-content: center;
   height: 100vh;
   align-items: center;
-  background: rgb(191,148,96);
-  background: linear-gradient(180deg, rgba(191,148,96,1) 17%, rgba(217,186,130,1) 76%);
+  background: #D9C0A3;
+  background: linear-gradient(180deg, #D9C0A3 17%, rgba(217, 186, 130, 1) 76%);
 }
-  h1{
+
+h1 {
   padding-top: 40px;
   padding-left: 40px;
   font-size: 30px;
   text-align: left;
   font-family: 'Open Sans', sans-serif;
 }
-h2{
+
+h2 {
   padding-top: 20px;
   padding-left: 40px;
   text-align: left;
@@ -21,12 +23,14 @@ h2{
   font-size: 25px;
   font-weight: bolder;
 }
-p{
+
+p {
   padding-left: 40px;
   text-align: left;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
 }
+
 .login-container {
   display: flex;
   width: 100%;
@@ -35,12 +39,13 @@ p{
   max-height: 600px;
   text-align: center;
   align-items: left;
-  background-color: rgba(0, 0, 0, 0.685);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+  background-color: rgba(15, 1, 1, 0.685);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   color: #fff;
 }
-.containerimg{
+
+.containerimg {
 
   height: 100%;
   width: 100%;
@@ -51,58 +56,66 @@ p{
   margin-bottom: auto;
 
 }
-img{
+
+img {
   display: cover;
-  max-width:100%;
-  max-height:100%;
-  
+  max-width: 100%;
+  max-height: 100%;
+
 }
-.container{
+
+.container {
 
   height: 100%;
   width: 100%;
   max-width: 430px;
 }
-.ancho-field{
+
+.ancho-field {
   margin-top: 4%;
   width: 80%;
 }
-.alto-field{
 
-}
-.btn-login{
+
+.btn-login {
   width: 80%;
   height: 50px;
   margin-top: 10%;
 }
-.spinner{
+
+.spinner {
   margin-top: 30px;
   margin: 0 auto;
 }
+
 /*CSS MAT INPUT*/
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/
   color: rgb(211, 174, 52) !important;
- }
- ::ng-deep .mat-form-field-label{
-   color: #fff;
+}
 
- }
- ::ng-deep.mat-form-field-underline {
+::ng-deep .mat-form-field-label {
+  color: #fff;
+
+}
+
+::ng-deep.mat-form-field-underline {
   /*change color of underline*/
   background-color: green !important;
-} 
+}
 
 ::ng-deep.mat-form-field-ripple {
- /*change color of underline when focused*/
- background-color: rgb(180, 134, 81) !important;;
+  /*change color of underline when focused*/
+  background-color: rgb(180, 134, 81) !important;
+  ;
 }
 
-::ng-deep.mat-raised-button{
-  background-color: #BF9460;
+::ng-deep.mat-raised-button {
+  background-color: #7317179a;
   color: rgb(241, 239, 239);
 }
-::ng-deep.mat-divider{
- background-color: 
-BF9460;
+
+::ng-deep.mat-divider {
+  background-color:
+    BF9460;
 }

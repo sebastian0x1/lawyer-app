@@ -11,7 +11,6 @@ import { AngularMaterialModule } from './components/material_components/angular-
 import { HttpClientJsonpModule } from '@angular/common/http';
 
 
-
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent }
 ]

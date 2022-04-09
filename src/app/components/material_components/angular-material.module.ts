@@ -34,7 +34,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -82,6 +82,7 @@ const materialModules = [
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    MatDialogModule,
 
 ];
 @NgModule({
