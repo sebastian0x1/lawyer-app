@@ -4,7 +4,7 @@ Este proyecto fue creado con Angular version 13.2.6.
 
 ## Dependencias
 Luego de bajar el proyecto instala Nodejs version 16.13.0 o similar.
-Despues instala las dependencias con el comando `ng serve` .
+Despues instala las dependencias con el comando `npm install` .
 
 
 ## Servidor de Desarrollo
