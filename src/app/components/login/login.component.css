@@ -119,3 +119,15 @@ img {
   background-color:
     BF9460;
 }
+
+@media (max-width: 768px) {
+      .containerimg{
+        display: none;
+      }
+      .login-container{
+        justify-content: center;
+      }
+      .body{
+        padding: 10px;
+      }  
+}
