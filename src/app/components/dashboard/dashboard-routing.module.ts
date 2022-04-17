@@ -8,6 +8,7 @@ import { InformesComponent } from './informes/informes.component';
 import { AyudaComponent } from './ayuda/ayuda.component';
 import { NewDemandaComponent } from './new-demanda/new-demanda.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NewUserComponent } from '../dashboard-admin/new-user/new-user.component';
 
 const routes: Routes = [
   {
@@ -19,8 +20,7 @@ const routes: Routes = [
       { path: 'ayuda', component: AyudaComponent },
       { path: 'new-demanda', component: NewDemandaComponent },
       { path: 'profile', component: ProfileComponent },
-
-
+      { path: 'new-user', component: NewUserComponent },
     ]
   }
 ];

@@ -122,9 +122,8 @@
 
 .footer {
   grid-area: footer;
-  background-color: #D9C0A3;
-}
 
+}
 
 .grid-container {
   display: grid;
@@ -139,7 +138,7 @@
   height: 100vh;
   background: #D9C0A3;
   background: linear-gradient(180deg, #D9C0A3 17%, rgba(217, 186, 130, 1) 76%);
-  padding: 20px 0;
+
 }
 
 .grid-container>div {

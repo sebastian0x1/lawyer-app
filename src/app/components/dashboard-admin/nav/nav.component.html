@@ -15,24 +15,11 @@
         </mat-card-header> 
       </mat-card>
     
-        <mat-list-item  routerLink="/dashboard/demanda">      
-          <mat-icon mat-list-icon>person</mat-icon>
-            <h4 mat-line *ngIf="isExpanded">Demandas</h4>
-          <mat-expansion-panel>a</mat-expansion-panel>      
-        </mat-list-item>
-        <mat-list-item routerLink="/dashboard/caso">
-          <mat-icon mat-list-icon>assignment</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Casos</h4>
-        </mat-list-item>
-        <mat-list-item routerLink="/dashboard/informes">
-          <mat-icon mat-list-icon>domain</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Informes</h4>
-        </mat-list-item>
-        <mat-list-item routerLink="/dashboard/ayuda">
+   
+        <mat-list-item routerLink="/dashboard-admin/user-list">
           <mat-icon mat-list-icon>folder_shared</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Ayuda</h4>
+          <h4 mat-line *ngIf="isExpanded">Usuarios</h4>
         </mat-list-item>
-
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

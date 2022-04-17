@@ -11,12 +11,31 @@
   max-height: 300px;
   overflow: auto;
   color: antiquewhite;
+
+}
+
+.example-table-container::-webkit-scrollbar {
+  width: 20px;
+
+  background-color: rgba(24, 24, 24, 0.788);
+}
+
+.example-table-container::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  background-color: rgb(51, 51, 51);
+}
+
+.example-table-container::-webkit-scrollbar-button,
+.example-table-container::-webkit-scrollbar-track,
+.example-table-container::-webkit-scrollbar-track-piece,
+.example-table-container::-webkit-scrollbar-corner,
+.example-table-container::-webkit-resizer {
+  display: none;
 }
 
 table {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.267);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.349);
+  background-color: rgba(0, 0, 0, 0.452);
 
 
 }
@@ -51,9 +70,11 @@ h2 {
 }
 
 ::ng-deep .mat-paginator-container {
-  background-color: rgb(168, 149, 125);
+  background-color: #441010ec;
   color: aliceblue;
 }
+
+
 
 /* Column Widths */
 .mat-column-number,
@@ -67,7 +88,7 @@ h2 {
 
 /*EXPANDABLE TABLE*/
 th {
-  background-color: rgb(168, 149, 125);
+  background-color: #812a2ae1;
   color: aliceblue;
 }
 
@@ -89,7 +110,7 @@ tr.example-element-row:not(.example-expanded-row):active {
   border-bottom-width: 0;
   color: aliceblue;
   background-color: rgba(0, 0, 0, 0.267);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.349);
+
 }
 
 .example-element-detail {
@@ -119,4 +140,44 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+
+.erasebtn {
+
+  background-color: #731717;
+}
+
+.editbtn {
+  color: aliceblue;
+}
+.fill-space {
+  flex: 1 1 auto;
+}
+
+/*FILTER*/
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 70px;
+
+}
+
+.example-full-width {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.24);
+
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(211, 174, 52) !important;
+}
+
+::ng-deep .mat-form-field-label {
+  color: #fff;
+}
+
+::ng-deep .mat-form-field {
+  border-radius: 20px;
 }

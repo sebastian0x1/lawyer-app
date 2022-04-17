@@ -1,30 +1,35 @@
-.body{
+.body {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
     width: 100%;
     margin: 0 auto;
 }
+
 /*GRID*/
-.nav-tile{
+.nav-tile {
     background-color: beige;
 }
-.sidebar-tile{
-    background: rgb(191,148,96);
+
+.sidebar-tile {
+    background: rgb(191, 148, 96);
 
 }
-.content{
+
+.content {
     background-color: moccasin;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    
-  }
- .separador{
+
+}
+
+.separador {
     background-color: rgba(0, 0, 0, 0.685);
- 
- }
+
+}

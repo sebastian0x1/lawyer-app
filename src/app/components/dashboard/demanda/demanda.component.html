@@ -1,9 +1,12 @@
-<h2>Demandas</h2>
-<div class="example-container mat-elevation-z8">
 
-  <div class="fitro">
-      <input> FILTRO
-    </div>
+<div class="example-container">
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Buscar Demandas</mat-label>
+      <input matInput placeholder="Ingrese Busqueda" value="">
+    </mat-form-field>
+  </form>
 
   <div class="example-loading-shade"
        *ngIf="isLoadingResults || isRateLimitReached">
@@ -43,22 +46,18 @@
         <td mat-cell *matCellDef="let row">{{row.created_at | date}}</td>
       </ng-container>
       <ng-container matColumnDef="Editar" >
-
         <th mat-header-cell *matHeaderCellDef>edit</th>
-  
         <td mat-cell *matCellDef="let element">
-          <button mat-mini-fab  routerLink="/dashboard/new-demanda" style="margin: 10px; background-color: #731717;">
-            <mat-icon  style=" color: aliceblue;">edit</mat-icon>       
+          <button class="editbtn" mat-mini-fab  routerLink="/dashboard/new-demanda" style="margin: 10px; background-color: #731717;">
+            <mat-icon >edit</mat-icon>       
              </button>  
         </td>
-  
       </ng-container>
-      <ng-container matColumnDef="Eliminar" >
+      <ng-container  matColumnDef="Eliminar" >
 
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-  
-        <td mat-cell *matCellDef="let element">
-          <button mat-mini-fab  routerLink="/dashboard/new-demanda" style="margin: 10px; background-color: #731717;">
+        <td  mat-cell *matCellDef="let element">
+          <button class="erasebtn" mat-mini-fab  routerLink="/dashboard/new-demanda">
             <mat-icon style=" color: aliceblue;">delete_foreve</mat-icon>
           </button>  
         </td>

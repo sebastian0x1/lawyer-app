@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,9 @@ export class LoginComponent implements OnInit {
     const password = this.form.value.password;
 
     if (usuario == 'hola' && password == 'chao') {
-      this.fakeLoading();
+      this.router.navigate(['/dashboard']);
+    } else if (usuario == 'chao' && password == 'hola') {
+      this.router.navigate(['/dashboard-admin']);
     } else {
       this.error();
       this.form.reset();
@@ -51,4 +54,5 @@ export class LoginComponent implements OnInit {
 
     }, 1);
   }
+
 }
