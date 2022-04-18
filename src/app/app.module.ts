@@ -4,11 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularMaterialModule } from './components/material_components/angular-material.module';
 import { HttpClientJsonpModule } from '@angular/common/http';
+import { AuthService } from './common/service/auth.service';
 
 
 const appRoutes: Routes = [
@@ -27,9 +28,11 @@ const appRoutes: Routes = [
     AngularMaterialModule,
     ReactiveFormsModule,
     HttpClientJsonpModule,
+    FormsModule
 
   ],
   providers: [
+    AuthService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
