@@ -10,6 +10,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularMaterialModule } from './components/material_components/angular-material.module';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { AuthService } from './common/service/auth.service';
+import { verify } from 'crypto';
+import { VerifyGuard } from './guards/verifyToken.guard';
 
 
 const appRoutes: Routes = [
@@ -32,7 +34,9 @@ const appRoutes: Routes = [
 
   ],
   providers: [
-    AuthService
+    AuthService,
+    VerifyGuard 
+    
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
