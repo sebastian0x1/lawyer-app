@@ -13,4 +13,8 @@ export class AuthService {
       console.log(user)  
       return this.http.post<any> ('https://backend-lawyer-app.herokuapp.com/' + 'api/auth/login', user);
   }
+
+  hasToken(){
+     return !!localStorage.getItem('token')
+  }
 }
