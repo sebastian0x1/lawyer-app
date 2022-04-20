@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { NgStyle } from '@angular/common';
+import { AuthService } from '../../../common/service/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -32,7 +33,7 @@ export class NavComponent {
   changeText: boolean;
 
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService) {
     this.changeText = false;
   }
 

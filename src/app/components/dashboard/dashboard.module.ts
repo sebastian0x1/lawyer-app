@@ -39,6 +39,7 @@ import { ProfileComponent } from './profile/profile.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-  ]
+  ],
+  
 })
 export class DashboardModule { }

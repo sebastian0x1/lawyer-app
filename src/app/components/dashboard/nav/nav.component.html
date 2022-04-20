@@ -42,7 +42,7 @@
       </button>      
       <span>lawyer-app</span>
       <span class="fill-space"></span>
-      <button  mat-mini-fab class="logoutbtn">
+      <button (click)="authService.logOut()" mat-mini-fab class="logoutbtn">
       <mat-icon >exit_to_app</mat-icon>
     </button>
     </mat-toolbar>

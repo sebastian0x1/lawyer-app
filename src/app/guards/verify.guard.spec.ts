@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VerifyGuard } from './verify.guard';
+import { VerifyGuard } from './verifyToken.guard';
 
 describe('VerifyGuard', () => {
   let guard: VerifyGuard;
