@@ -7,6 +7,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';
 import { Data } from '@angular/router';
+import { CasoInterface } from './caso.interface';
 
 /**
  * @title Table retrieving data through HTTP
@@ -24,10 +25,10 @@ import { Data } from '@angular/router';
   ],
 })
 export class CasoComponent implements AfterViewInit {
-  displayedColumns: string[] = ['created', 'state', 'number', 'title', 'select'];
+  displayedColumns: string[] = ['created', 'state', 'number', 'select'];
   exampleDatabase: ExampleHttpDatabase | null;
-  data: GithubIssue[] = [];
-  expandedElement: GithubIssue | null;
+  data: CasoInterface[] = [];
+  expandedElement: CasoInterface | null;
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
@@ -69,7 +70,7 @@ export class CasoComponent implements AfterViewInit {
           // limit errors, we do not want to reset the paginator to zero, as that
           // would prevent users from re-triggering requests.
           this.resultsLength = data.total_count;
-          return data.items;
+          return data.casos;
         }),
       )
       .subscribe(data => (this.data = data));
@@ -78,29 +79,28 @@ export class CasoComponent implements AfterViewInit {
   }
 }
 
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
-}
+// export interface GithubApi {
+//   items: GithubIssue[];
+//   total_count: number;
+// }
 
-export interface GithubIssue {
-  created_at: string;
-  number: string;
-  state: string;
-  title: string;
+// export interface GithubIssue {
+//   created_at: string;
+//   number: string;
+//   state: string;
+//   title: string;
 
-}
+// }
 
 /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleHttpDatabase {
   constructor(private _httpClient: HttpClient) { }
 
-  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<GithubApi> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page + 1
-      }`;
+  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<any> {
 
-    return this._httpClient.get<GithubApi>(requestUrl);
+      
+
+    return this._httpClient.get<any>('https://backend-lawyer-app.herokuapp.com/api/caso');
   }
 
 }

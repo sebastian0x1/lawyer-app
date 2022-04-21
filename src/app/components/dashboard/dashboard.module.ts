@@ -16,6 +16,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProfileComponent } from './profile/profile.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/common/service/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -41,5 +43,12 @@ import { ProfileComponent } from './profile/profile.component';
     MatSortModule,
   ],
   
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ]
 })
 export class DashboardModule { }

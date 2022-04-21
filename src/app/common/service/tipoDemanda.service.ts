@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CasosService {
+export class tipoDemandaService {
 
   constructor(private http: HttpClient) { }
 
-  getCasos(){
-    return this.http.get<any>('https://backend-lawyer-app.herokuapp.com/'+ 'api/demanda')
+  getDemandas(){
+    return this.http.get<any>('https://backend-lawyer-app.herokuapp.com/'+ 'api/tipodemanda')
   }
 }

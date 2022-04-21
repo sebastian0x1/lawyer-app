@@ -11,7 +11,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): any {
       const toekenReq = req.clone({
         setHeaders: {
-          Autorization: `x-access-token ${this.authService.getToken()}`
+          "x-access-token": `${this.authService.getToken()}`
         }
       })
       return next.handle(toekenReq)
