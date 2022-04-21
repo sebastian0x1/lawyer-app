@@ -23,7 +23,7 @@
 
   background-color: transparent;
   color: rgb(234, 238, 241);
-
+  font-size: large;
 
 }
 
@@ -135,8 +135,8 @@
     'left main main main main main main right'
     'left main main main main main main right'
     'footer footer footer footer footer footer footer footer';
-
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   background: #D9C0A3;
   background: linear-gradient(180deg, #D9C0A3 17%, rgba(217, 186, 130, 1) 76%);
   padding: 20px 0;

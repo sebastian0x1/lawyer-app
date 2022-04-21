@@ -10,5 +10,5 @@ export class AppComponent {
   title = 'lawyer-app';
 
 
-
 }
+

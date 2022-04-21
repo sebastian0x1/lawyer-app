@@ -22,6 +22,7 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -40,8 +41,8 @@ const appRoutes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    } 
-    
+    }
+
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

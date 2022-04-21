@@ -171,4 +171,10 @@ tr.example-element-row:not(.example-expanded-row):active {
 .erasebtn {
 
     background-color: #731717;
+    color: aliceblue;
+}
+
+.editbtn {
+    background-color: #731717;
+    color: aliceblue;
 }

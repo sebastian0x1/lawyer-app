@@ -24,7 +24,7 @@ import { Data } from '@angular/router';
   ],
 })
 export class UserListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['created', 'state', 'number', 'title', 'select', 'Editar', 'Eliminar',];
+  displayedColumns: string[] = ['created', 'state', 'number', 'title', 'add', 'Editar', 'Eliminar',];
   exampleDatabase: ExampleHttpDatabase | null;
   data: GithubIssue[] = [];
   expandedElement: GithubIssue | null;

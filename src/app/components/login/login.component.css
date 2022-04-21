@@ -83,11 +83,6 @@ img {
   margin-top: 10%;
 }
 
-.spinner {
-  margin-top: 30px;
-  margin: 0 auto;
-}
-
 /*CSS MAT INPUT*/
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/
@@ -121,13 +116,24 @@ img {
 }
 
 @media (max-width: 768px) {
-      .containerimg{
-        display: none;
-      }
-      .login-container{
-        justify-content: center;
-      }
-      .body{
-        padding: 10px;
-      }  
+  .containerimg {
+    display: none;
+  }
+
+  .login-container {
+    justify-content: center;
+  }
+
+  .body {
+    padding: 10px;
+  }
 }
+
+::ng-deep.mat-progress-spinner {
+  margin: 0 auto;
+  margin-top: 30px;
+  z-index: 1;
+}
+
+
+/**/

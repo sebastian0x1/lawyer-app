@@ -150,6 +150,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 .editbtn {
   color: aliceblue;
 }
+
 .fill-space {
   flex: 1 1 auto;
 }

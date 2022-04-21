@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', canActivate: [VerifyGuard], loadChildren: () => import('./components/dashboard/dashboard.module').then(x => x.DashboardModule) },
   { path: 'dashboard-admin', canActivate: [VerifyGuard], loadChildren: () => import('./components/dashboard-admin/dashboard-admin.module').then(x => x.DashboardAdminModule) },
-
 ];
 
 @NgModule({

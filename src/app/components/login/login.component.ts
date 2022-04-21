@@ -16,8 +16,12 @@ export class LoginComponent implements OnInit {
   centered = true;
   form: FormGroup;
   loadingSpinner = false;
+  //
+  color = 'primary';
+  mode = 'indeterminate';
+  value = 50;
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, private authService: AuthService) {
-       
+
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -29,23 +33,25 @@ export class LoginComponent implements OnInit {
 
   ingresar() {
     const user = {
-       username: this.form.value.username,
-       password: this.form.value.password
+      username: this.form.value.username,
+      password: this.form.value.password
     }
 
     // llamada a la api con los datos del formulario
     this.authService.signIn(user).subscribe(
-       res => {
-         this.router.navigate(['/dashboard']);
-         localStorage.setItem('token', res.token)
-       },
-       err => {
-         this.error()
-         this.form.reset()
-       }
+      res => {
+        this.router.navigate(['/dashboard']);
+        this.fakeLoading();
+        localStorage.setItem('token', res.token)
+
+      },
+      err => {
+        this.error()
+        this.form.reset()
+      }
 
     )
-    
+
     // if (user.username == 'hola' && user.password == 'chao') {
     //   this.router.navigate(['/dashboard']);
     // } else if (user.username == 'chao' && user.password == 'hola') {
@@ -63,13 +69,12 @@ export class LoginComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     })
+    this.fakeLoading();
   }
 
   fakeLoading() {
     this.loadingSpinner = false;
     setTimeout(() => {
-      this.router.navigate(['dashboard']);
-
     }, 1);
   }
 

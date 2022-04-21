@@ -3,7 +3,6 @@
   color: aliceblue;
   font-size: large;
 
-
 }
 
 ::ng-deep.mat-toolbar {
@@ -23,8 +22,7 @@
 
   background-color: transparent;
   color: rgb(234, 238, 241);
-
-
+  font-size: large;
 }
 
 .mat-toolbar {
@@ -32,6 +30,7 @@
   color: rgb(247, 247, 247);
   height: auto;
   background: #b89759dc;
+
 }
 
 .mat-expansion-panel-header.mat-expanded {
@@ -43,6 +42,7 @@
 .sidenav {
   border: #5f4a32;
   box-shadow: inset;
+
 
 }
 
@@ -122,8 +122,9 @@
 
 .footer {
   grid-area: footer;
-
+  background-color: #D9C0A3;
 }
+
 
 .grid-container {
   display: grid;
@@ -134,11 +135,11 @@
     'left main main main main main main right'
     'left main main main main main main right'
     'footer footer footer footer footer footer footer footer';
-
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   background: #D9C0A3;
   background: linear-gradient(180deg, #D9C0A3 17%, rgba(217, 186, 130, 1) 76%);
-
+  padding: 20px 0;
 }
 
 .grid-container>div {

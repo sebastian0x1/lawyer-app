@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VerifyGuard } from './verifyToken.guard';
+// import { VerifyGuard } from './verifyToken.guard';
 
-describe('VerifyGuard', () => {
-  let guard: VerifyGuard;
+// describe('VerifyGuard', () => {
+//   let guard: VerifyGuard;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    guard = TestBed.inject(VerifyGuard);
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     guard = TestBed.inject(VerifyGuard);
+//   });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
-});
+//   it('should be created', () => {
+//     expect(guard).toBeTruthy();
+//   });
+// });

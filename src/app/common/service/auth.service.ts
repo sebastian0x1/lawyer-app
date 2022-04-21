@@ -7,22 +7,21 @@ HttpClient
 })
 export class AuthService {
 
-
   constructor(private http: HttpClient, private router: Router) { }
 
-  signIn(user:any){
-      console.log(user)  
-      return this.http.post<any> ('https://backend-lawyer-app.herokuapp.com/' + 'api/auth/login', user);
+  signIn(user: any) {
+    console.log(user)
+    return this.http.post<any>('https://backend-lawyer-app.herokuapp.com/' + 'api/auth/login', user);
   }
 
-  hasToken(){
-     return !!localStorage.getItem('token')
+  hasToken() {
+    return !!localStorage.getItem('token')
   }
 
-  getToken(){
+  getToken() {
     return localStorage.getItem('token');
   }
-  logOut(){
+  logOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/login'])
   }

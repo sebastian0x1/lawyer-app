@@ -1,17 +1,20 @@
+* {
+    box-sizing: border-box;
+
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
     height: 100%;
     width: 100%;
-    flex-direction: row;
-    align-items: flex-start;
+
     background-color: rgba(0, 0, 0, 0.685);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 
 }
-
 
 .example-form {
     min-width: 150px;
@@ -20,8 +23,34 @@
     width: 100%;
     padding: 20px;
     margin: 10px;
-
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
+
+.row {
+    display: flex;
+    height: min-content;
+    flex-wrap: wrap;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .col {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+        min-width: 100%;
+
+    }
+}
+
 
 .example-full-width {
     width: 100%;
