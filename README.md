@@ -3,7 +3,7 @@
 Este proyecto fue creado con Angular version 13.2.6.
 
 ## Dependencias
-Luego de bajar el proyecto instala Nodejs version 16.13.0 o similar.
+Luego de bajar el proyecto instala Nodejs version 16.13.0 o posterior.
 Despues instala las dependencias con el comando `npm install` .
 
 
