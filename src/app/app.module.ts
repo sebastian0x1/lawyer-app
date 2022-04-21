@@ -10,7 +10,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularMaterialModule } from './components/material_components/angular-material.module';
 import { HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './common/service/auth.service';
-import { VerifyGuard } from './guards/verifyToken.guard';
+//import { VerifyGuard } from './guards/verifyToken.guard';
 import { TokenInterceptorService } from './common/service/token-interceptor.service';
 
 
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthService,
-    VerifyGuard,
+    //  VerifyGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
