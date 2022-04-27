@@ -107,3 +107,5 @@ dist
 .angular
 # Local Netlify folder
 .netlify
+
+.dist
