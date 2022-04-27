@@ -1,16 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DemandaService } from '../../../common/service/demanda.service';
+import { ComunaService } from '../../../common/service/comuna.service';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
-interface Car {
-  value: string;
-  viewValue: string;
-}
 
 
 @Component({
@@ -18,29 +11,51 @@ interface Car {
   templateUrl: './new-demanda.component.html',
   styleUrls: ['./new-demanda.component.css']
 })
-export class NewDemandaComponent implements OnInit {
-  ngOnInit(): void {
-  }
-  form: FormGroup;
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
-  cars: Car[] = [
-    { value: 'volvo', viewValue: 'Volvo' },
-    { value: 'saab', viewValue: 'Saab' },
-    { value: 'mercedes', viewValue: 'Mercedes' },
-  ];
-  foodControl = new FormControl(this.foods[2].value);
-  carControl = new FormControl(this.cars[1].value);
 
-  constructor() {
-    this.form = new FormGroup({
-      food: this.foodControl,
-      car: this.carControl,
-    });
+
+
+export class NewDemandaComponent implements OnInit {
+
+  comunasControl: FormControl;
+  tipoDemandaControl: FormControl;
+  form : FormGroup;
+  comunas: any;
+  tiposDemanda: any;
+  constructor(private demandaService: DemandaService, private comunaService: ComunaService) {
+
+  
   }
+
+   ngOnInit(): void {
+     this.comunaService.getComunas().subscribe(
+      res => {
+         this.comunas = res.comunas  
+      }
+    )
+
+    this.demandaService.getTipoDemandas().subscribe(
+      res => {
+        this.tiposDemanda = res.tDemanda
+      }
+    )
+    this.comunasControl = new FormControl();
+    this.tipoDemandaControl= new FormControl();
+    this.form = new FormGroup({
+      comumna: this.comunasControl,
+      tipoDemanda: this.tipoDemandaControl,
+    });
+    
+
+   
+
+  
+  }
+
+  
+   
+
+
+  
   // constructor(public dialog: MatDialog) { }
 
   // openDialog() {

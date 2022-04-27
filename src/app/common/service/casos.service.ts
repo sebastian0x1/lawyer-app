@@ -9,6 +9,10 @@ export class CasosService {
   constructor(private http: HttpClient) { }
 
   getCasos(){
-    return this.http.get<any>('https://backend-lawyer-app.herokuapp.com/'+ 'api/demanda')
+    return this.http.get<any>('https://backend-lawyer-app.herokuapp.com/'+ 'api/caso')
+  }
+
+  selectCase(caso: any){
+    localStorage.setItem('selectedCase', caso)
   }
 }

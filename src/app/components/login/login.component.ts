@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
       username: this.form.value.username,
       password: this.form.value.password
     }
+    this.loadingSpinner = true;
 
     // llamada a la api con los datos del formulario
     this.authService.signIn(user).subscribe(
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
 
   error() {
     this._snackBar.open('Usuario o contrasenna incorrecto', '', {
-      duration: 5000,
+      duration: 4000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     })

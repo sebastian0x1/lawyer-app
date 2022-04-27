@@ -7,6 +7,8 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';
 import { Data } from '@angular/router';
+import { DemandaService } from '../../../common/service/demanda.service';
+import { DemandaInterface } from './demanda.interface';
 
 /**
  * @title Table retrieving data through HTTP
@@ -25,10 +27,9 @@ import { Data } from '@angular/router';
 })
 export class DemandaComponent implements AfterViewInit {
   displayedColumns: string[] = ['created', 'state', 'number', 'title', 'Editar', 'Eliminar',];
-  exampleDatabase: ExampleHttpDatabase | null;
-  data: GithubIssue[] = [];
-  expandedElement: GithubIssue | null;
+  expandedElement: DemandaInterface | null;
   resultsLength = 0;
+  data: any;
   isLoadingResults = true;
   isRateLimitReached = false;
 
@@ -36,10 +37,9 @@ export class DemandaComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private demandaService: DemandaService) { }
 
   ngAfterViewInit() {
-    this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
 
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
@@ -50,11 +50,7 @@ export class DemandaComponent implements AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoIssues(
-            this.sort.active,
-            this.sort.direction,
-            this.paginator.pageIndex,
-          ).pipe(catchError(() => observableOf(null)));
+          return this.demandaService.getDemandas().pipe(catchError(() => observableOf(null)));
         }),
         map(data => {
           // Flip flag to show that loading has finished.
@@ -65,11 +61,8 @@ export class DemandaComponent implements AfterViewInit {
             return [];
           }
 
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
           this.resultsLength = data.total_count;
-          return data.items;
+          return data;
         }),
       )
       .subscribe(data => (this.data = data));
@@ -78,35 +71,3 @@ export class DemandaComponent implements AfterViewInit {
   }
 }
 
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
-}
-
-export interface GithubIssue {
-  created_at: string;
-  number: string;
-  state: string;
-  title: string;
-
-}
-
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleHttpDatabase {
-  constructor(private _httpClient: HttpClient) { }
-
-  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<GithubApi> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page + 1
-      }`;
-
-    return this._httpClient.get<GithubApi>(requestUrl);
-  }
-
-}
-
-
-
-/**  Copyright 2022 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at https://angular.io/license */

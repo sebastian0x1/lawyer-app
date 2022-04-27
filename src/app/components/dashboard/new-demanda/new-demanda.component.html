@@ -5,6 +5,7 @@
       <mat-label>Company (disabled)</mat-label>
       <input matInput disabled value="Google">
     </mat-form-field> -->
+    
       <div class="row">
         <div class="col">
           <mat-card>
@@ -34,10 +35,9 @@
             <br>
               <mat-form-field appearance="fill">
                 <mat-label>Tipo de Demanda</mat-label>
-                <mat-select [formControl]="foodControl" name="food">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.viewValue}}
+                <mat-select [formControl]="tipoDemandaControl" name="tipoDemanda">
+                <mat-option *ngFor="let tipoDemanda of tiposDemanda" [value]="tipoDemanda.nombre">
+                  {{tipoDemanda.nombre}}
                 </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -81,10 +81,9 @@
         
             <mat-form-field appearance="fill">
               <mat-label>Comuna</mat-label>
-              <mat-select [formControl]="foodControl" name="food">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.viewValue}}
+              <mat-select [formControl]="comunasControl" name="comuna">
+                <mat-option *ngFor="let comuna of comunas" [value]="comuna.nombre">
+                  {{comuna.nombre}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -125,10 +124,9 @@
   
       <mat-form-field appearance="fill">
         <mat-label>Comuna</mat-label>
-        <mat-select [formControl]="foodControl" name="food">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
+        <mat-select [formControl]="comunasControl" name="comuna">
+          <mat-option *ngFor="let comuna of comunas" [value]="comuna.nombre">
+            {{comuna.nombre}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -136,7 +134,7 @@
 
     </mat-card>
   </div>
-  <button mat-raised-button >Guardar</button>
+  <button mat-raised-button  >Guardar</button>
   </div>
     <!-- <button mat-button style="background-color: aqua;" (click)="openDialog()">Guardar</button> -->
 

@@ -8,7 +8,7 @@ export class ComunaService {
 
   constructor(private http: HttpClient) { }
 
-  getDemandas(){
+  getComunas(){
     return this.http.get<any>('https://backend-lawyer-app.herokuapp.com/'+ 'api/comunas')
   }
 }

@@ -8,6 +8,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { MatTableDataSource } from '@angular/material/table';
 import { Data } from '@angular/router';
 import { CasoInterface } from './caso.interface';
+import { CasosService } from '../../../common/service/casos.service';
 
 /**
  * @title Table retrieving data through HTTP
@@ -26,7 +27,6 @@ import { CasoInterface } from './caso.interface';
 })
 export class CasoComponent implements AfterViewInit {
   displayedColumns: string[] = ['created', 'state', 'number', 'select'];
-  exampleDatabase: ExampleHttpDatabase | null;
   data: CasoInterface[] = [];
   expandedElement: CasoInterface | null;
   resultsLength = 0;
@@ -37,10 +37,9 @@ export class CasoComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient, private casosService: CasosService) { }
 
   ngAfterViewInit() {
-    this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
 
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
@@ -51,11 +50,7 @@ export class CasoComponent implements AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoIssues(
-            this.sort.active,
-            this.sort.direction,
-            this.paginator.pageIndex,
-          ).pipe(catchError(() => observableOf(null)));
+          return this.casosService.getCasos().pipe(catchError(() => observableOf(null)));
         }),
         map(data => {
           // Flip flag to show that loading has finished.
@@ -77,32 +72,12 @@ export class CasoComponent implements AfterViewInit {
 
 
   }
-}
 
-// export interface GithubApi {
-//   items: GithubIssue[];
-//   total_count: number;
-// }
-
-// export interface GithubIssue {
-//   created_at: string;
-//   number: string;
-//   state: string;
-//   title: string;
-
-// }
-
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleHttpDatabase {
-  constructor(private _httpClient: HttpClient) { }
-
-  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<any> {
-
-      
-
-    return this._httpClient.get<any>('https://backend-lawyer-app.herokuapp.com/api/caso');
+  getSelectedCase(element: any){
+       this.casosService.selectCase(element)
   }
-
 }
+
+
 
 

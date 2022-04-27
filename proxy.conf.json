@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "file:///",
+      "secure": false
+    }
+  }

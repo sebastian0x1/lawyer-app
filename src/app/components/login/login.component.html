@@ -4,11 +4,15 @@
             <img class="containerimg" src="../../assets/img/imglogin6.png" alt="">
         </div>
         <mat-divider [vertical]="true"></mat-divider>
-   <mat-progress-spinner class="spinner" *ngIf="loadingSpinner"></mat-progress-spinner>
-        <form class="container" *ngIf="!loadingSpinner" [formGroup]="form" (ngSubmit)="ingresar()">
+  
+        <form class="container"  [formGroup]="form" (ngSubmit)="ingresar()">
             <h1>Bienvenido!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             <mat-divider></mat-divider>
+            <div class="spinner__container">
+                <mat-spinner class="spinner" *ngIf="loadingSpinner"></mat-spinner>
+            </div>   
+            <div *ngIf="!loadingSpinner">
             <h2>Inicio Sesión</h2>
             <div class="alto-field">
                 <mat-form-field class="ancho-field" appearance="fill">
@@ -24,6 +28,8 @@
                 </mat-form-field>
             </div>
             <button class="btn-login" mat-raised-button >Iniciar Sesion</button>
+         </div>
+
         </form>
         <mat-divider [vertical]="true"></mat-divider>
   </div>
