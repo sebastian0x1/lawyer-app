@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { ProfileComponent } from './profile/profile.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'src/app/common/service/token-interceptor.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { TokenInterceptorService } from 'src/app/common/service/token-intercepto
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    FormsModule
   ],
   
   providers: [

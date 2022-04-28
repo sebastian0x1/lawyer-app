@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DemandaService } from '../../../common/service/demanda.service';
 import { ComunaService } from '../../../common/service/comuna.service';
+import { CasosService } from '../../../common/service/casos.service';
+import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 
 
@@ -21,10 +24,40 @@ export class NewDemandaComponent implements OnInit {
   form : FormGroup;
   comunas: any;
   tiposDemanda: any;
-  constructor(private demandaService: DemandaService, private comunaService: ComunaService) {
 
+  dataDemandaForm = {
+      demanda: {
+        fecha: "",
+        hora: "",
+        seguimiento: "",
+        detalle: "",
+        tipo_demanda: "",
+        caso: ""
+      },
+      demandado: {
+        nombre: "",
+        apaterno: "",
+        comuna: "",
+        rut: "",
+        telefono: ""
+      },
+      demandante: {
+        nombre: "",
+        apaterno: "",
+        comuna: "",
+        rut: "",
+        telefono: ""
+
+      }
+
+  }  
+
+  constructor(private demandaService: DemandaService, 
+             private comunaService: ComunaService, 
+             private casosService: CasosService,
+             private router: Router
+             ) {}
   
-  }
 
    ngOnInit(): void {
      this.comunaService.getComunas().subscribe(
@@ -44,27 +77,48 @@ export class NewDemandaComponent implements OnInit {
       comumna: this.comunasControl,
       tipoDemanda: this.tipoDemandaControl,
     });
-    
-
-   
+    //Set case from local storage
+    this.dataDemandaForm.demanda.caso = this.casosService.getCaseOfLocalStorage();
 
   
   }
 
   
    
+  loga(){
+    
+    this.dataDemandaForm.demandado.comuna =
+      this.comunaService.findIdOfComunabyName(
+        this.comunas,
+        this.dataDemandaForm.demandado.comuna 
+    );
+    
+    this.dataDemandaForm.demandante.comuna =
+    this.comunaService.findIdOfComunabyName(
+      this.comunas,
+      this.dataDemandaForm.demandado.comuna 
+    );
 
+    this.dataDemandaForm.demanda.tipo_demanda =
+      this.demandaService.findIdOfTipoDemandabyName(
+        this.tiposDemanda,
+        this.dataDemandaForm.demanda.tipo_demanda
+    );
+    
+    this.demandaService.createDemanda(this.dataDemandaForm).subscribe(
+       res => {
+          // this.router.navigate(["demanda"])
+          console.log(res)
+       },
+       err => {
+         console.log(err)
+       } 
+     )
+
+  }
 
   
-  // constructor(public dialog: MatDialog) { }
 
-  // openDialog() {
-  //   const dialogRef = this.dialog.open(dialogDemanda);
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
 }
 
 @Component({

@@ -19,8 +19,16 @@ export class DemandaService {
   }
 
   createDemanda(data: any){
-    return this.http.post<any>('https://backend-lawyer-app.herokuapp.com/demnada', data)
+    console.log(data)
+    return this.http.post<any>('https://backend-lawyer-app.herokuapp.com/' + 'api/demanda', data)
 
   }
+
+  findIdOfTipoDemandabyName(arrTipo: Array<any>, nombre: string){
+    arrTipo.filter(tipo => tipo.nombre === nombre);
+    return arrTipo[0].id; 
+  }
+
+
 
 }
