@@ -18,13 +18,26 @@
                 <mat-form-field class="ancho-field" appearance="fill">
                     <mat-label>Usuario</mat-label>
                     <input matInput autocomplete="off" formControlName="username">
-                </mat-form-field>    
+                    <span *ngIf="username!.hasError('pattern') && username!.touched ">
+                        El campo usuario sólo admite caracteres alfabéticos
+                    </span> 
+                    <span *ngIf="username!.hasError('maxlength') && username!.touched ">
+                        Ingrese usuario con un máximo de 8 caracteres
+                    </span> 
+                     </mat-form-field>    
                 <mat-form-field class="ancho-field" appearance="fill">
                     <mat-label>Contraseña</mat-label>
                     <input matInput  autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <span *ngIf="password!.hasError('minlength') && password!.touched ">
+                        Debe ingresar un mínimo de 8 caracteres
+                    </span> 
+                    <span *ngIf="password!.hasError('pattern') && password!.touched ">
+                        El campo clave sólo admite caracteres alfabéticos
+                    </span> 
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>    
+                    </button>  
+  
                 </mat-form-field>
             </div>
             <button class="btn-login" mat-raised-button >Iniciar Sesion</button>

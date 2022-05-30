@@ -1,144 +1,186 @@
 
 <div class="container">
-    <form class="example-form" #demandaForm="ngForm">
-    <!-- <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Company (disabled)</mat-label>
-      <input matInput disabled value="Google">
-    </mat-form-field> -->
+  <form class="example-form" [formGroup]="form" #demandaForm="ngForm" >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label></mat-label>
+      <input matInput disabled value="LawyerApp">
+    </mat-form-field> 
     
-      <div class="row">
-        <div class="col">
-          <mat-card>
-              <mat-card-header>Datos de la Demanda</mat-card-header>
-                <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Seguimiento</mat-label>
-                <input matInput [(ngModel)]="dataDemandaForm.demanda.seguimiento" name="seguimiento">
-              </mat-form-field>
-    
-              <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="dataDemandaForm.demanda.fecha" name="fecha">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Hora</mat-label>
-                <input matInput type="time" [(ngModel)]="dataDemandaForm.demanda.hora" name="hora">
-              </mat-form-field>
-          </mat-card>
-        </div>
-        <div class="col">
-          <mat-card>
-            <br>
-            <br>
-              <mat-form-field appearance="fill">
-                <mat-label>Tipo de Demanda</mat-label>
-                <mat-select [formControl]="tipoDemandaControl" name="tipoDemanda" [(ngModel)]="dataDemandaForm.demanda.tipo_demanda">
-                <mat-option *ngFor="let tipoDemanda of tiposDemanda" [value]="tipoDemanda.nombre">
-                  {{tipoDemanda.nombre}}
-                </mat-option>
-                </mat-select>
-              </mat-form-field>
-        
-              <mat-form-field  appearance="outline">
-                <mat-label>Descripcion</mat-label>
-                <textarea matInput [(ngModel)]="dataDemandaForm.demanda.detalle" name="detalle"></textarea>
-              </mat-form-field>
-          </mat-card>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <mat-card>
-            <mat-card-header>Demandado</mat-card-header>
-              <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Rut</mat-label>
-              <input matInput [(ngModel)]="dataDemandaForm.demandado.rut" name="rutDemandnado">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Nombre</mat-label>
-              <input matInput [(ngModel)]="dataDemandaForm.demandado.nombre" name="nombreDemandado">
-            </mat-form-field>
-        
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Apellido</mat-label>
-              <input matInput [(ngModel)]="dataDemandaForm.demandado.apaterno" name="apaternoDemandando">
-            </mat-form-field>
-          </mat-card>
-        </div>
-        <div class="col">
-          <br>
-          <br>
-          <mat-card>
-              <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Telefono</mat-label>
-              <input matInput [(ngModel)]="dataDemandaForm.demandado.telefono" name="telefonoDemandando">
-            </mat-form-field>
-        
-            <mat-form-field appearance="fill">
-              <mat-label>Comuna</mat-label>
-              <mat-select [formControl]="comunasControl" name="comunaDemandado" [(ngModel)]="dataDemandaForm.demandado.comuna">
-                <mat-option *ngFor="let comuna of comunas" [value]="comuna.nombre">
-                  {{comuna.nombre}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-card>
-        </div>
-      </div>
-
-<div class="row">
-  <div class="col">
-
-    <mat-card>
-      <mat-card-header>Demandante</mat-card-header>
-      
-          <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Rut</mat-label>
-          <input matInput [(ngModel)]="dataDemandaForm.demandante.rut" name="rutDemandante">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Nombre</mat-label>
-        <input matInput [(ngModel)]="dataDemandaForm.demandante.nombre" name="nombreDemandante">
-      </mat-form-field>
- 
-        <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Apellido</mat-label>
-        <input matInput [(ngModel)]="dataDemandaForm.demandante.apaterno" name="apaternoDemandante">
-      </mat-form-field>
-    </mat-card>
-  </div>
+    <div class="row">
       <div class="col">
         <mat-card>
-        <br>
-        <br>
-        <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Telefono</mat-label>
-        <input matInput [(ngModel)]="dataDemandaForm.demandante.telefono" name="telefonoDemandante">
-      </mat-form-field>
+            <mat-card-header>Datos de la Demanda</mat-card-header>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Seguimiento</mat-label>
+                <input maxlength="10"matInput class="form-control" id="seguimiento" name="seguimiento"
+                 formControlName="seguimiento"/>
+                <span *ngIf="seguimiento!.invalid && seguimiento!.touched && seguimiento">
+                  Seguimiento es <strong>requerido</strong>
+                </span>
+                <span *ngIf="seguimiento!.invalid && seguimiento!.hasError('minlength')">
+                Debe ingresar un mínimo de 8 caracteres
+                </span>
+            </mat-form-field>
   
-      <mat-form-field appearance="fill">
-        <mat-label>Comuna</mat-label>
-        <mat-select [formControl]="comunasControl" name="comunaDemandante" [(ngModel)]="dataDemandaForm.demandante.comuna">
-          <mat-option *ngFor="let comuna of comunas" [value]="comuna.nombre">
-            {{comuna.nombre}}
-          </mat-option>
-        </mat-select>
+            <mat-form-field appearance="fill">
+              <mat-label>Choose a date</mat-label>
+              <input  formControlName="fecha" matInput [matDatepicker]="picker" [(ngModel)]="dataDemandaForm.demanda.fecha" name="fecha">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <span *ngIf="fecha!.invalid && fecha!.touched && fecha">
+                Fecha es <strong>requerido</strong>
+              </span>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Hora</mat-label>
+              <input formControlName="hora" matInput type="time" [(ngModel)]="dataDemandaForm.demanda.hora" name="hora">
+              <span *ngIf="hora!.invalid && hora!.touched && hora">
+                hora es <strong>requerido</strong>
+              </span>
+            </mat-form-field>
+        </mat-card>
+      </div>
+      <div class="col">
+        <mat-card>
+          <br>
+          <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Tipo Demanda</mat-label>
+            <input formControlName="tipo_demanda" matInput #tipo_demanda name="tipo_demanda">
+            <span *ngIf="tipo_demanda!.oninvalid && tipo_demanda">
+              tipo demanda es <strong>requerido</strong>
+            </span>
+          </mat-form-field>
+      
+            <mat-form-field  appearance="outline">
+              <mat-label>Descripcion</mat-label>
+              <textarea  formControlName="detalle" matInput #message maxlength="20" [(ngModel)]="dataDemandaForm.demanda.detalle" #detalle name="detalle"></textarea>
+              <mat-hint align="end">{{message.value.length}} / 20</mat-hint>
+              <span *ngIf="detalle!.oninvalid && detalle">
+                detalle es <strong>requerido</strong>
+              </span>
+
+            </mat-form-field>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-card>
+          <mat-card-header>Demandado</mat-card-header>
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Rut</mat-label>
+            <input formControlName="r_demandado" matInput [(ngModel)]="dataDemandaForm.demandado.rut" name="rutDemandnado">
+            <span *ngIf="r_demandado!.invalid && r_demandado!.touched && r_demandado">
+              Rut demandado es <strong>requerido</strong>
+            </span>
+
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input  matInput  formControlName="n_demandado" [(ngModel)]="dataDemandaForm.demandado.nombre" name="nombreDemandado">
+            <span *ngIf="n_demandado!.invalid && n_demandado!.touched && n_demandado">
+              Nombre demandado es <strong>requerido</strong>
+            </span>
+    
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Apellido</mat-label>
+            <input formControlName="a_demandado" matInput [(ngModel)]="dataDemandaForm.demandado.apaterno" name="apaternoDemandando">
+            <span *ngIf="a_demandado!.invalid && a_demandado!.touched && a_demandado">
+              Apellido demandado es <strong>requerido</strong>
+            </span>
+          </mat-form-field>
+        </mat-card>
+      </div>
+      <div class="col">
+        <br>
+        <br>
+        <mat-card>
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Telefono</mat-label>
+            <input type="number" formControlName="t_demandado"  required matInput [(ngModel)]="dataDemandaForm.demandado.telefono" name="telefonoDemandando">
+            <span *ngIf="t_demandado!.invalid && t_demandado!.touched && t_demandado">
+              Telefono demandado es <strong>requerido</strong>
+            </span>
+         
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Comuna</mat-label>
+            <input formControlName="c_demandado" matInput [(ngModel)]="dataDemandaForm.demandado.comuna" name="ComunaDemandado">
+            <span *ngIf="c_demandado!.invalid && c_demandado!.touched && c_demandado">
+              Comuna demandado es <strong>requerido</strong>
+            </span>
+          </mat-form-field>
+
+        </mat-card>
+      </div>
+    </div>
+
+<div class="row">
+<div class="col">
+
+  <mat-card>
+    <mat-card-header>Demandante</mat-card-header>
+    
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Rut</mat-label>
+        <input formControlName="r_demandante" matInput [(ngModel)]="dataDemandaForm.demandante.rut" name="rutDemandante">
+        <span *ngIf="r_demandante!.invalid && r_demandante!.touched && r_demandante">
+          Rut demandante es <strong>requerido</strong>
+        </span>
       </mat-form-field>
- 
 
-    </mat-card>
-  </div>
-  <button mat-raised-button (click)="loga()">Guardar</button>
-  </div>
-    <!-- <button mat-button style="background-color: aqua;" (click)="openDialog()">Guardar</button> -->
+      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="n_demandante" matInput [(ngModel)]="dataDemandaForm.demandante.nombre" name="nombreDemandante">
+      <span *ngIf="n_demandante!.invalid && n_demandante!.touched && n_demandante">
+        Nombre demandante es <strong>requerido</strong>
+      </span>
+    </mat-form-field>
 
-  </form>
+      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input formControlName="a_demandante" matInput [(ngModel)]="dataDemandaForm.demandante.apaterno" name="apaternoDemandante">
+      <span *ngIf="a_demandante!.invalid && a_demandante!.touched && a_demandante">
+        Apellido demandante es <strong>requerido</strong>
+      </span>
+    </mat-form-field>
+  </mat-card>
+</div>
+    <div class="col">
+      <mat-card>
+      <br>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Telefono</mat-label>
+      <input type="number" formControlName="t_demandante" matInput [(ngModel)]="dataDemandaForm.demandante.telefono" name="telefonoDemandante">
+      <span *ngIf="t_demandante!.invalid && t_demandante!.touched && t_demandante">
+        Telefono demandante es <strong>requerido</strong>
+      </span>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Comuna</mat-label>
+     <input  formControlName="c_demandante" matInput [(ngModel)]="dataDemandaForm.demandante.comuna" name="ComunaDemandado">
+     <span *ngIf="c_demandante!.invalid && c_demandante!.touched && c_demandante">
+      Comuna demandante es <strong>requerido</strong>
+    </span>
+    </mat-form-field>
+
+  </mat-card>
+</div>
+<button mat-raised-button (click)="SaveDemanda()" >Guardar</button>
+</div>
+  <!-- <button mat-button style="background-color: aqua;" (click)="openDialog()">Guardar</button> -->
+
+</form>
 
 </div>
 

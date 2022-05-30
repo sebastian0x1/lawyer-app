@@ -5,7 +5,8 @@ import { MatSort, SortDirection } from '@angular/material/sort';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,78 +14,59 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './ayuda.component.html',
   styleUrls: ['./ayuda.component.css']
 })
-export class AyudaComponent implements AfterViewInit {
-  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
-  exampleDatabase: ExampleHttpDatabase | null;
-  data: GithubIssue[] = [];
+export class AyudaComponent {
+  contacto: FormGroup;
+  constructor(private _snackBar: MatSnackBar, private formBuilder: FormBuilder) { }
 
-  resultsLength = 0;
-  isLoadingResults = true;
-  isRateLimitReached = false;
+  ngOnInit(): void {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+    this.contacto = this.formBuilder.group({
+      fname: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('[a-zA-Z]+')]),
+      lname: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),
+      a: new FormControl('', [Validators.required]),
+      a2: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
+      p: new FormControl('', [Validators.required]),
 
-  constructor(private _httpClient: HttpClient) { }
-
-  ngAfterViewInit() {
-    this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
-
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-
-    merge(this.sort.sortChange, this.paginator.page)
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoIssues(
-            this.sort.active,
-            this.sort.direction,
-            this.paginator.pageIndex,
-          ).pipe(catchError(() => observableOf(null)));
-        }),
-        map(data => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.isRateLimitReached = data === null;
-
-          if (data === null) {
-            return [];
-          }
-
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
-          this.resultsLength = data.total_count;
-          return data.items;
-        }),
-      )
-      .subscribe(data => (this.data = data));
+    });
   }
-}
+  // If the user changes the sort order, reset back to the first page.
 
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
-}
 
-export interface GithubIssue {
-  created_at: string;
-  number: string;
-  state: string;
-  title: string;
-}
-
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleHttpDatabase {
-  constructor(private _httpClient: HttpClient) { }
-
-  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<GithubApi> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page + 1
-      }`;
-
-    return this._httpClient.get<GithubApi>(requestUrl);
+  get fname() {
+    return this.contacto.get('fname')
   }
+  get lname() {
+    return this.contacto.get('lname')
+  }
+  get a() {
+    return this.contacto.get('a')
+  }
+  get a2() {
+    return this.contacto.get('a2')
+  }
+  get city() {
+    return this.contacto.get('city')
+  }
+  get state() {
+    return this.contacto.get('state')
+  }
+  get p() {
+    return this.contacto.get('p')
+  }
+
+
+  enviar() {
+
+    this._snackBar.open('Formulario enviado correctamente', '', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    })
+    this.contacto.reset;
+  }
+
+
 }
+

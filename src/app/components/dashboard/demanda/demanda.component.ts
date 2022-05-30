@@ -1,73 +1,114 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+
+import { DataSource } from '@angular/cdk/collections';
+import { Observable, ReplaySubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, ViewChild, AfterViewInit, AfterContentInit, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, SortDirection } from '@angular/material/sort';
-import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { MatTableDataSource } from '@angular/material/table';
-import { Data } from '@angular/router';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Data } from '@angular/router';
 import { DemandaService } from '../../../common/service/demanda.service';
 import { DemandaInterface } from './demanda.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 /**
- * @title Table retrieving data through HTTP
+ * @fecha_asignada Adding and removing data when using an observable-based datasource.
  */
 @Component({
   selector: 'app-demanda',
   templateUrl: './demanda.component.html',
   styleUrls: ['./demanda.component.css'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
 })
-export class DemandaComponent implements AfterViewInit {
-  displayedColumns: string[] = ['created', 'state', 'number', 'title', 'Editar', 'Eliminar',];
-  expandedElement: DemandaInterface | null;
-  resultsLength = 0;
-  data: any;
-  isLoadingResults = true;
-  isRateLimitReached = false;
+export class DemandaComponent implements AfterContentInit {
+  displayedColumns: string[] = ['fecha', 'seguimiento', 'id', 'tipo_demanda_id', 'Editar', 'Eliminar'];
+  dataSource;
+  saveBtn = true;
+  x: any;
+  xParse: any;
+  @ViewChild(MatTable) table: MatTable<any>;
+  ELEMENT_DATA: DemandaInterface[] = [
+    { fecha: new Date("01-04-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'asd5ad7d', id: 'aasdasd', tipo_demanda_id: 'Asalto' },
+    { fecha: new Date("01-05-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'asa31d7d', id: 'aasdasd', tipo_demanda_id: 'Robo' },
+    { fecha: new Date("01-06-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'a35ad71d', id: 'aasdasd', tipo_demanda_id: 'Asalto' },
+    { fecha: new Date("01-07-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'asd5ad7d', id: 'aasdasd', tipo_demanda_id: 'Robo' },
+    { fecha: new Date("01-08-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'sdf234fd', id: 'aasdasd', tipo_demanda_id: 'Robo ' },
+    { fecha: new Date("01-14-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'sdf2fsff', id: 'aasdasd', tipo_demanda_id: 'Asalto' },
+    { fecha: new Date("01-15-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'sfsdf442', id: 'aasdasd', tipo_demanda_id: 'Asalto' },
+    { fecha: new Date("01-16-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'asjyjhdd', id: 'aasdasd', tipo_demanda_id: 'Robo ' },
+    { fecha: new Date("01-17-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: 'adfg5add', id: 'aasdasd', tipo_demanda_id: 'Asalto' },
+    { fecha: new Date("01-18-2000").toDateString(), hora: '', detalle: '', caso_id: '', usuario_id: '', seguimiento: '', id: 'aasdasd', tipo_demanda_id: 'Robo ' },
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  ];
 
 
-  constructor(private demandaService: DemandaService) { }
+  constructor(private route: ActivatedRoute, public ds: DemandaService, public _snackBar: MatSnackBar) {
 
-  ngAfterViewInit() {
-
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-
-
-    merge(this.sort.sortChange, this.paginator.page)
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          return this.demandaService.getDemandas().pipe(catchError(() => observableOf(null)));
-        }),
-        map(data => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.isRateLimitReached = data === null;
-
-          if (data === null) {
-            return [];
-          }
-
-          this.resultsLength = data.total_count;
-          return data;
-        }),
-      )
-      .subscribe(data => (this.data = data));
+    this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
 
   }
+
+  ngAfterContentInit() {
+
+    this.ds.getDemandaChangeEmitter().subscribe((dataItem) => {
+      const newDemadaTableFormat =
+      {
+        fecha: dataItem.fecha,
+        hora: dataItem.hora,
+        detalle: '',
+        caso_id: '',
+        usuario_id: '',
+        seguimiento: dataItem.seguimiento,
+        id: 'UID-3114',
+        tipo_demanda_id: dataItem.tipo_demanda
+      }
+      console.log(newDemadaTableFormat)
+      this.ELEMENT_DATA.push(newDemadaTableFormat)
+    })
+
+  }
+
+  type(ele: any, value: any, val: any) {
+    console.log(value);
+    console.log(ele["val"]);
+    ele[val] = value;
+
+    console.log(this.dataSource);
+  }
+  save() {
+    this.saveBtn = true;
+    localStorage.setItem("data", JSON.stringify(this.dataSource.data));
+    console.log(this.dataSource);
+  }
+
+  edit() {
+
+    this.saveBtn = false;
+  }
+  get() {
+    this.route.snapshot.paramMap.get('seguimiento');
+  }
+  delete(element: number) {
+    const data = this.dataSource.data;
+    data.splice(element, 1);
+    this.dataSource.data = data;
+    this._snackBar.open('Demanda eliminada correctamente', '', {
+      duration: 1000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    })
+  }
+  getinfo() {
+  }
+
+  get fecha() {
+    return this.xParse.seguimiento
+  }
 }
+
+//INSERT DATA FROM FORM TO LOCALSTORAGE WITH THIS FORMAT----
 

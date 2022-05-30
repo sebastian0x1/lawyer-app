@@ -1,6 +1,6 @@
-export interface CasoInterface{
+export interface CasoInterface {
     id: string;
     estado: string;
-    detalle: number
+    detalle: string
     created_at: string
 }

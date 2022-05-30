@@ -182,3 +182,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 ::ng-deep .mat-form-field {
   border-radius: 20px;
 }
+
+.mat-cell {
+  color: white;
+}

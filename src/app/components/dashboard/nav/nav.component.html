@@ -10,24 +10,24 @@
         <mat-card class="example-card">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Francis Gonzalez</mat-card-title>
+          <mat-card-title>{{name}} {{lastname}}</mat-card-title>
           <mat-card-subtitle> <button class="profilebtn" routerLink="/dashboard/profile" mat-button>Perfil</button> </mat-card-subtitle>
         </mat-card-header> 
       </mat-card>
-    
+      <mat-list-item routerLink="/dashboard/caso">
+        <mat-icon mat-list-icon>assignment</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Casos</h4>
+      </mat-list-item>
         <mat-list-item  routerLink="/dashboard/demanda">      
           <mat-icon mat-list-icon>person</mat-icon>
             <h4 mat-line *ngIf="isExpanded">Demandas</h4>
           <mat-expansion-panel>a</mat-expansion-panel>      
         </mat-list-item>
-        <mat-list-item routerLink="/dashboard/caso">
-          <mat-icon mat-list-icon>assignment</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Casos</h4>
-        </mat-list-item>
-        <mat-list-item routerLink="/dashboard/informes">
+   
+        <!-- <mat-list-item routerLink="/dashboard/informes">
           <mat-icon mat-list-icon>domain</mat-icon>
           <h4 mat-line *ngIf="isExpanded">Informes</h4>
-        </mat-list-item>
+        </mat-list-item> -->
         <mat-list-item routerLink="/dashboard/ayuda">
           <mat-icon mat-list-icon>folder_shared</mat-icon>
           <h4 mat-line *ngIf="isExpanded">Ayuda</h4>

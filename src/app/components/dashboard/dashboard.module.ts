@@ -16,8 +16,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProfileComponent } from './profile/profile.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptorService } from 'src/app/common/service/token-interceptor.service';
+// import { HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { TokenInterceptorService } from 'src/app/common/service/token-interceptor.service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -42,15 +42,16 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+
   ],
-  
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    }
-  ]
+
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: TokenInterceptorService,
+  //     multi: true
+  //   }
+  // ]
 })
 export class DashboardModule { }
