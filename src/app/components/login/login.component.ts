@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     // }
     this.loadingSpinner = true;
     setTimeout(() => {
-      if (this.form.value.username === "hola" && this.form.value.password === "chao") {
+      if (this.form.value.username === "admin" && this.form.value.password === "password") {
         this.router.navigate(['/dashboard']);
       }
       else {
